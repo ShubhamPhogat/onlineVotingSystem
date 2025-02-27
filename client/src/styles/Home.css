@@ -1,0 +1,128 @@
+/* home.css */
+
+/* Main container */
+.home-container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  /* Background image */
+  .home-background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url('../assets/homeBg.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+  
+  /* Content container with backdrop blur */
+  .home-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Welcome heading */
+  .home-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Button container */
+  .home-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    gap: 1rem;
+  }
+  
+  /* Base button style */
+  .home-button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .home-button:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Vote button */
+  .home-button-vote {
+    background-color: #2563eb;
+  }
+  
+  .home-button-vote:hover {
+    background-color: #1e40af;
+  }
+  
+  /* Participate button */
+  .home-button-participate {
+    background-color: #9333ea;
+  }
+  
+  .home-button-participate:hover {
+    background-color: #7e22ce;
+  }
+  
+  /* Leaderboard button */
+  .home-button-leaderboard {
+    background-color: #16a34a;
+  }
+  
+  .home-button-leaderboard:hover {
+    background-color: #15803d;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .home-title {
+      font-size: 1.5rem;
+    }
+    
+    .home-content {
+      width: 95%;
+      padding: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .home-content {
+      padding: 1rem;
+    }
+    
+    .home-button {
+      padding: 0.6rem 1.2rem;
+    }
+  }

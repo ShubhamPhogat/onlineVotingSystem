@@ -1,0 +1,268 @@
+/* leaderboard.css */
+
+/* Main container */
+.leaderboard-container {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    padding: 2rem 1rem;
+    overflow-x: hidden;
+  }
+  
+  /* Background image */
+  .leaderboard-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url('../assets/Shubham_Phogat_animated_wooden_slab_background_3246d2d4-bee3-42a5-b909-7af4dc525464.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: -1;
+    opacity: 0.8;
+  }
+  
+  /* Main content container */
+  .leaderboard-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Page title */
+  .leaderboard-title {
+    font-size: 2.5rem;
+    color: white;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Connection status indicator */
+  .leaderboard-status {
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .leaderboard-status::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+  }
+  
+  .leaderboard-status-connected {
+    background-color: rgba(52, 211, 153, 0.2);
+    color: #10b981;
+  }
+  
+  .leaderboard-status-connected::before {
+    background-color: #10b981;
+  }
+  
+  .leaderboard-status-connecting, .leaderboard-status-reconnecting {
+    background-color: rgba(251, 191, 36, 0.2);
+    color: #f59e0b;
+  }
+  
+  .leaderboard-status-connecting::before, .leaderboard-status-reconnecting::before {
+    background-color: #f59e0b;
+  }
+  
+  .leaderboard-status-disconnected, .leaderboard-status-error {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+  }
+  
+  .leaderboard-status-disconnected::before, .leaderboard-status-error::before {
+    background-color: #ef4444;
+  }
+  
+  .leaderboard-error {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    font-weight: normal;
+  }
+  
+  /* Leaderboard table container */
+  .leaderboard-table-container {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 0.75rem;
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Leaderboard table */
+  .leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+  
+  .leaderboard-table th {
+    padding: 1rem;
+    font-weight: 700;
+    color: #1f2937;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-bottom: 2px solid rgba(209, 213, 219, 0.5);
+  }
+  
+  .leaderboard-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(209, 213, 219, 0.3);
+  }
+  
+  /* Table columns */
+  .leaderboard-rank {
+    width: 80px;
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+  }
+  
+  .leaderboard-name {
+    font-weight: 600;
+  }
+  
+  .leaderboard-score-header {
+    width: 100px;
+    text-align: center;
+  }
+  
+  .leaderboard-score-cell {
+    text-align: center;
+  }
+  
+  /* Score display */
+  .leaderboard-score {
+    font-weight: 700;
+    font-size: 1.2rem;
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  /* Score update animation */
+  .leaderboard-score.updated {
+    animation: score-pulse 0.8s ease-out;
+  }
+  
+  @keyframes score-pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+      color: #2563eb;
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  /* Top 3 styling */
+  .leaderboard-top-1 {
+    background-color: rgba(176, 167, 5, 0.799);
+  }
+  
+  .leaderboard-top-2 {
+    background-color: rgba(45, 35, 48, 0.6);
+  }
+  
+  .leaderboard-top-3 {
+    background-color: rgba(103, 70, 45, 0.6);
+  }
+  
+  .leaderboard-crown {
+    font-size: 0.9rem;
+    margin-left: 0.25rem;
+    vertical-align: middle;
+  }
+  
+  /* Empty state */
+  .leaderboard-empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #6b7280;
+    font-style: italic;
+  }
+  
+  /* Row hover effect */
+  .leaderboard-row:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Add score change animation */
+  @keyframes score-change-up {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .leaderboard-title {
+      font-size: 2rem;
+    }
+    
+    .leaderboard-content {
+      padding: 1.5rem;
+    }
+    
+    .leaderboard-table th,
+    .leaderboard-table td {
+      padding: 0.75rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .leaderboard-container {
+      padding: 1rem 0.5rem;
+    }
+    
+    .leaderboard-title {
+      font-size: 1.5rem;
+    }
+    
+    .leaderboard-content {
+      padding: 1rem;
+    }
+    
+    .leaderboard-rank {
+      width: 50px;
+    }
+    
+    .leaderboard-score-header {
+      width: 70px;
+    }
+    
+    .leaderboard-table th,
+    .leaderboard-table td {
+      padding: 0.5rem;
+      font-size: 0.9rem;
+    }
+  }
