@@ -45,7 +45,7 @@ const LeaderBoard = () => {
   useEffect(() => {
     const connectWebSocket = () => {
       try {
-        socketRef.current = new WebSocket("ws://localhost:8000");
+        socketRef.current = new WebSocket("ws://localhost:8002");
 
         socketRef.current.addEventListener("open", (event) => {
           console.log("Connected to WebSocket server");
