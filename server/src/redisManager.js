@@ -12,34 +12,37 @@ export class redisManager {
   }
 
   async init() {
-    this.publisher = createClient({
-      username: "default",
-      password: process.env.REDIS_PASSWORD,
-      socket: {
-        host: "redis-13493.c305.ap-south-1-1.ec2.redns.redis-cloud.com",
-        port: 13493,
-      },
-    });
+    try {
+      // Connect to local Redis container on port 6379
+      this.publisher = createClient({
+        socket: {
+          host: "localhost",
+          port: 6379,
+        },
+      });
 
-    this.subscriber = createClient({
-      username: "default",
-      password: process.env.REDIS_PASSWORD,
-      socket: {
-        host: process.env.REDIS_HOST,
-        port: 13493,
-      },
-    });
+      this.subscriber = createClient({
+        socket: {
+          host: "localhost",
+          port: 6379,
+        },
+      });
 
-    await this.publisher.connect();
-    await this.subscriber.connect();
-    this.publisher.on("error", () => {
-      console.error("Redis publisher error:", error);
-    });
-    this.subscriber.on("error", () => {
-      console.error("Redis subscriber error:", error);
-    });
+      this.publisher.on("error", (error) => {
+        console.error("Redis publisher error:", error.message);
+      });
+      this.subscriber.on("error", (error) => {
+        console.error("Redis subscriber error:", error.message);
+      });
 
-    console.log("Redis client connected");
+      await this.publisher.connect();
+      await this.subscriber.connect();
+
+      console.log("Redis client connected");
+    } catch (error) {
+      console.error("Failed to initialize Redis:", error.message);
+      throw error;
+    }
   }
 
   static async getInstance() {

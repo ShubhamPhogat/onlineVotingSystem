@@ -1,9 +1,9 @@
-import { WebSocketServer } from "ws";
+import { WebSocketServer, WebSocket } from "ws";
 import { redisManager } from "./redisManager.js";
 
 export const initilizeWebSocketServer = async () => {
-  const wss = new WebSocketServer({ port: 8000 });
-  console.log("WebSocket server started");
+  const wss = new WebSocketServer({ port: 8002 });
+  console.log("WebSocket server started on port 8002");
 
   // Create a Set to store all connected WebSocket clients
   const clients = new Set();
@@ -20,9 +20,9 @@ export const initilizeWebSocketServer = async () => {
         const leaderboard = JSON.parse(message);
 
         // Broadcast the message to all connected clients
-        console.log(clients.size);
+        console.log("Broadcasting to", clients.size, "clients");
         clients.forEach((client) => {
-          if (client.readyState == WebSocket.OPEN) {
+          if (client.readyState === WebSocket.OPEN) {
             console.log("Broadcasting to client:", message);
             client.send(JSON.stringify(leaderboard));
           }
